@@ -9,7 +9,9 @@ def load_json(filename):
         data = json.load(file)
         return data
 
-def load_authors_into_db(filename):
+def insert_authors(filename):
+    Author.drop_collection()
+    
     data: dict = load_json(filename)
     for author in data:
         new_author = Author(fullname=author['fullname'])
@@ -18,7 +20,9 @@ def load_authors_into_db(filename):
         new_author.description = author['description']
         new_author.save()
 
-def load_quotes_into_db(filename):
+def insert_quotes(filename):
+    Quote.drop_collection()
+
     data: dict = load_json(filename)
     authors = Author.objects()
     for quote in data:

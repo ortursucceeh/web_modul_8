@@ -10,6 +10,7 @@ packages = [{include = "modul_8"}]
 python = "^3.10"
 pymongo = {extras = ["srv", "tls"], version = "^4.3.3"}
 mongoengine = "^0.25.0"
+configparser = "^5.3.0"
 
 
 [build-system]

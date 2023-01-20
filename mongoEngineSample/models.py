@@ -2,7 +2,7 @@ from mongoengine import Document, CASCADE
 from mongoengine.fields import ListField, StringField, DateField, ReferenceField
 from mongoengine import connect
 
-connect(host=f"mongodb://127.0.0.1:27017/my_db")
+connect(host=f"mongodb://127.0.0.1:27017/modul_8")
 
 
 

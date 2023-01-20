@@ -12,18 +12,20 @@ def load_json(filename):
 def load_authors_into_db(filename):
     data: dict = load_json(filename)
     for author in data:
-        Author(fullname=author['fullname'],
-                born_date=datetime.strptime(author['born_date'], "%B %d, %Y").date(),
-                born_location=author['born_location'],
-                description=author['description']).save()
+        new_author = Author(fullname=author['fullname'])
+        new_author.born_date = datetime.strptime(author['born_date'], "%B %d, %Y").date()
+        new_author.born_location = author['born_location']
+        new_author.description = author['description']
+        new_author.save()
 
 def load_quotes_into_db(filename):
     data: dict = load_json(filename)
     authors = Author.objects()
     for quote in data:
-        Quote(tags=quote['tags'],
-                author=(choice(authors)).id,
-                quote=quote['quote']).save()
+        new_quote = Quote(tags=quote['tags'])
+        new_quote.author = choice(authors).id
+        new_quote.quote = quote['quote']
+        new_quote.save()
 
 
 if __name__ == '__main__':

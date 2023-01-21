@@ -5,7 +5,6 @@ from mongoengine import connect
 connect(host=f"mongodb://127.0.0.1:27017/modul_8")
 
 
-
 class Author(Document):
     fullname = StringField(required=True, unique=True)
     born_date = DateField()

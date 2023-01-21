@@ -33,5 +33,5 @@ def insert_quotes(filename):
 
 
 if __name__ == '__main__':
-    load_authors_into_db(r'json_data\authors.json')
-    load_quotes_into_db(r'json_data\quotes.json')
+    insert_authors(r'json_data\authors.json')
+    insert_quotes(r'json_data\quotes.json')

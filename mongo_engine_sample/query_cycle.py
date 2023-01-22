@@ -1,5 +1,3 @@
-from pprint import pprint
-
 import redis
 from redis_lru import RedisLRU
 
@@ -46,7 +44,6 @@ def query_db_cycle():
                 output_response(query_quotes(values))
             
         
-
 if __name__ == '__main__':
     query_db_cycle()
         

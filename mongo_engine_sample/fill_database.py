@@ -13,6 +13,7 @@ def insert_authors(filename):
     Author.drop_collection()
     
     data: dict = load_json(filename)
+
     for author in data:
         new_author = Author(fullname=author['fullname'])
         new_author.born_date = datetime.strptime(author['born_date'], "%B %d, %Y").date()
@@ -22,9 +23,9 @@ def insert_authors(filename):
 
 def insert_quotes(filename):
     Quote.drop_collection()
-
-    data: dict = load_json(filename)
     authors = Author.objects()
+    data: dict = load_json(filename)
+
     for quote in data:
         new_quote = Quote(tags=quote['tags'])
         new_quote.author = choice(authors).id

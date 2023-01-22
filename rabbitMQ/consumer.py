@@ -3,6 +3,7 @@ from time import sleep
 import pika
 
 from models import Contact
+
 def main():
     credentials = pika.PlainCredentials('guest', 'guest')
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials))
@@ -16,7 +17,7 @@ def main():
         contact_email = contacts(id=contact_id)[0].email
         
         sleep(1)
-        
+
         print(f" [x] Sent message to contact's email: '{contact_email}' with id: {contact_id}")
 
         contacts(id=contact_id)[0].update(sended=True)
